@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SearchInput = styled.input`
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   width: 200px;
   margin: auto;
   outline: none;
@@ -31,8 +31,8 @@ export const RadioInputsWrapper = styled.div`
 
 export const SearchButtonWrapper = styled.div`
   text-align: center;
-  margin-bottom: 35px;
-  
+  margin: 35px 0px;
+
   button {
     color: #fff;
     background-color: ${({ theme }) => theme.mainColors.blue};
@@ -47,4 +47,3 @@ export const SearchButtonWrapper = styled.div`
     }
   }
 `;
-

@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import MainPageLayout from '../components/MainLayout';
-import { useShows } from '../misc/custom-hooks';
-import { getApi } from '../misc/config';
-import ShowGrid from '../show/ShowGrid';
+import React, { useState, useEffect } from "react";
+import MainPageLayout from "../components/MainLayout";
+import { useShows } from "../misc/custom-hooks";
+import { getApi } from "../misc/config";
+import ShowGrid from "../show/ShowGrid";
 
 const Starred = () => {
   const [starred] = useShows();
-
   const [shows, setShows] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (starred && starred.length > 0) {
-      const promises = starred.map(showId => getApi(`/shows/${showId}`));
+      const promises = starred.map((showId) => getApi(`/shows/${showId}`));
 
       Promise.all(promises)
-        .then(apiData => apiData.map(show => ({ show })))
-        .then(results => {
+        .then((apiData) => apiData.map((show) => ({ show })))
+        .then((results) => {
           setShows(results);
           setIsLoading(false);
         })
-        .catch(err => {
+        .catch((err) => {
           setError(err.message);
           setIsLoading(false);
         });
