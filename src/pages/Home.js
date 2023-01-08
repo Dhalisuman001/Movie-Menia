@@ -14,9 +14,8 @@ const Home = () => {
       setResult(result);
     });
   };
-  const onEnter = (ev) => {
-    console.log(ev.key);
-    if (ev.key === "Enter") {
+  const onEnter = (e) => {
+    if (e.key === "Enter") {
       onSearch();
     }
   };

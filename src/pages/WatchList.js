@@ -4,7 +4,7 @@ import { useShows } from "../misc/custom-hooks";
 import { getApi } from "../misc/config";
 import ShowGrid from "../show/ShowGrid";
 
-const Starred = () => {
+const WatchList = () => {
   const [starred] = useShows();
   const [shows, setShows] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,4 +39,4 @@ const Starred = () => {
   );
 };
 
-export default Starred;
+export default WatchList;
