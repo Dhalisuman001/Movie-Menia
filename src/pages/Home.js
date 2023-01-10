@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MainLayout from "../components/MainLayout";
-import getApi from "../misc/config";
-import useLastQuary from "../misc/useLastQuary";
+import getApi from "../hooks/config";
+import useLastQuary from "../hooks/useLastQuary";
 import ShowGrid from "../show/ShowGrid";
 import { SearchButtonWrapper, SearchInput } from "./HomeStyled";
 

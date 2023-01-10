@@ -2,7 +2,7 @@ import React from "react";
 import ShowCard from "./ShowCard";
 import img from "../asset/not-found.png";
 import { FlexGrid } from "../components/Styled";
-import useWatchlist from "../misc/useWatchlist";
+import useWatchlist from "../hooks/useWatchlist";
 
 const ShowGrid = ({ data }) => {
   const [starredShow, dispatchStarred] = useWatchlist();
