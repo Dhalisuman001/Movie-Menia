@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MainPageLayout from "../components/MainLayout";
-import { useShows } from "../misc/custom-hooks";
-import { getApi } from "../misc/config";
+import getApi from "../misc/config";
 import ShowGrid from "../show/ShowGrid";
+import useWatchlist from "../misc/useWatchlist";
 
 const WatchList = () => {
-  const [starred] = useShows();
+  const [starred] = useWatchlist();
   const [shows, setShows] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);

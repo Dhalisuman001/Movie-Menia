@@ -1,28 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Star, StyleShowCard } from './StyleShowCard';
+import React from "react";
+import { Link } from "react-router-dom";
+import { StyleShowCard } from "./StyleShowCard";
 
 const ShowCard = ({ id, image, name, summary, onStarClick, isStarred }) => {
-    const summaryAsText = summary
-        ? `${summary.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, "")}...`
-        : 'No description';
+  const summaryAsText = summary
+    ? `${summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, "")}...`
+    : "No description";
 
-    return (
-        <StyleShowCard>
-            <div className='img-wrapper'>
-                <img src={image} alt="show" />
-            </div>
+  return (
+    <StyleShowCard active={isStarred}>
+      <div className="img-wrapper">
+        <img src={image} alt="show" />
+      </div>
 
-            <h1>{name}</h1>
+      <h1>{name}</h1>
 
-            <p>{summaryAsText}</p>
+      <p>{summaryAsText}</p>
 
-            <div className='btns'>
-                <Link to={`/show/${id}`}>Read more</Link>
-                <button type="button" onClick={onStarClick}><Star active={isStarred} /></button>
-            </div>
-        </StyleShowCard>
-    );
+      <div className="btns">
+        <Link to={`/show/${id}`}>Read more</Link>
+        <button type="button" onClick={onStarClick}>
+          {isStarred ? "Remove" : "Watch Later"}
+        </button>
+      </div>
+    </StyleShowCard>
+  );
 };
 
-export default ShowCard
+export default ShowCard;

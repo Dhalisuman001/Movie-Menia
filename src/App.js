@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Show from "./pages/Show";
 import WatchList from "./pages/WatchList";
 import { ThemeProvider } from "styled-components";
-// import NotFound from "./pages/NotFound";
 
 const theme = {
   mainColors: {
@@ -21,7 +20,6 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/watchlist" element={<WatchList />} />
         <Route path="/show/:id" element={<Show />} />
-        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </ThemeProvider>
   );
