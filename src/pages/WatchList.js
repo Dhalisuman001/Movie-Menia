@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import MainPageLayout from "../components/MainLayout";
-import getApi from "../misc/config";
+import getApi from "../hooks/config";
 import ShowGrid from "../show/ShowGrid";
-import useWatchlist from "../misc/useWatchlist";
+import useWatchlist from "../hooks/useWatchlist";
 
 const WatchList = () => {
   const [starred] = useWatchlist();

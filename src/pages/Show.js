@@ -5,7 +5,7 @@ import Data from "../show/Data";
 import Seasons from "../show/Seasons";
 import Cast from "../show/Cast";
 import { InfoBlock, ShowPageWrapper } from "./ShowStylePages";
-import useShow from "../misc/useShow";
+import useShow from "../hooks/useShow";
 
 const Show = () => {
   const { id } = useParams();
