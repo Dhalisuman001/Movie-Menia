@@ -1,4 +1,4 @@
-deployed https://dhalisuman001.github.io/box-office/#/
+
 
 # Getting Started with Create React App
 
