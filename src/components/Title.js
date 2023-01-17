@@ -1,13 +1,12 @@
-import React from 'react'
-import { TitleWrapper } from '../pages/TitleStyle'
+import React from "react";
+import { TitleWrapper } from "../pages/TitleStyle";
 
-const Title = ({ title, subtitle }) => {
-    return (
-        <TitleWrapper>
-            <h1>{title}</h1>
-            <p>{subtitle}</p>
-        </TitleWrapper>
-    )
-}
+const Title = () => {
+  return (
+    <TitleWrapper>
+      <a href="/">CineMax</a>
+    </TitleWrapper>
+  );
+};
 
-export default Title
+export default Title;

@@ -1,9 +1,7 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Show from "./pages/Show";
-import WatchList from "./pages/WatchList";
+// import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import Home from "./pages/Home";
 
 const theme = {
   mainColors: {
@@ -16,11 +14,7 @@ const theme = {
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/watchlist" element={<WatchList />} />
-        <Route path="/show/:id" element={<Show />} />
-      </Routes>
+      <Home />
     </ThemeProvider>
   );
 };
