@@ -1,21 +1,26 @@
+import { CssBaseline } from "@mui/material";
 import React from "react";
-// import { Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import Home from "./pages/Home";
-
-const theme = {
-  mainColors: {
-    blue: "#03DAC6",
-    gray: "#c6c6c6",
-    dark: "#353535",
-  },
-};
-
+import { Route, Routes } from "react-router";
+import { Actors, MovieInfo, Movies, Navbar, Profile } from "./components/";
+import useStyles from "./style";
 const App = () => {
+  const style = useStyles();
   return (
-    <ThemeProvider theme={theme}>
-      <Home />
-    </ThemeProvider>
+    <div className={style.root}>
+      <CssBaseline />
+      <Navbar />
+      <main className={style.content}>
+        <div className={style.toolkit}>
+          <Routes>
+            <Route exact path="/" element={<Movies />} />
+            <Route exact path="/approved" element={<Movies />} />
+            <Route exact path="/movie/:id" element={<MovieInfo />} />
+            <Route exact path="/actors/:id" element={<Actors />} />
+            <Route exact path="/profile/:id" element={<Profile />} />
+          </Routes>
+        </div>
+      </main>
+    </div>
   );
 };
 
