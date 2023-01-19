@@ -1,13 +1,21 @@
 import React from "react";
 import { Box, CircularProgress, Typography } from "@mui/material";
-// import { useSelector } from "react-redux";
-// import { MovieList, Pagination, FeaturedMovie } from "../index";
 
 import { useGetMoviesQuery } from "../../redux/Api/Api";
 import MovieList from "../MovieList/MovieList";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Movies = () => {
-  const { data, error, isFetching } = useGetMoviesQuery();
+  const [page] = useState(1);
+  const { genreIdOrCategoryName, searchQuery } = useSelector(
+    (state) => state.currentGenreOrCategoryReducer
+  );
+  const { data, error, isFetching } = useGetMoviesQuery({
+    genreIdOrCategoryName,
+    page,
+    searchQuery,
+  });
 
   if (isFetching) {
     return (
