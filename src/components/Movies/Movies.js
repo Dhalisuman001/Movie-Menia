@@ -3,7 +3,7 @@ import { Box, CircularProgress, Typography } from "@mui/material";
 // import { useSelector } from "react-redux";
 // import { MovieList, Pagination, FeaturedMovie } from "../index";
 
-import { useGetMoviesQuery } from "../../redux/Api/TMDB";
+import { useGetMoviesQuery } from "../../redux/Api/Api";
 import MovieList from "../MovieList/MovieList";
 
 const Movies = () => {
