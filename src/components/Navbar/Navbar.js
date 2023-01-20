@@ -8,24 +8,24 @@ import {
   Avatar,
   useMediaQuery,
 } from "@mui/material";
-import {
-  Menu,
-  AccountCircle,
-  Brightness7,
-  Brightness4,
-} from "@mui/icons-material";
+import { Menu, Brightness7, Brightness4 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import useStyles from "./Styles";
 import { useTheme } from "@mui/material/styles";
 import Sidebar from "../Sidebar/Sidebar";
 import Search from "../Search/Search";
+import { FcGoogle } from "react-icons/fc";
+import { useDispatch, useSelector } from "react-redux";
+import { userLoginAction } from "../../redux/slices/UserSlice";
 
 const Navbar = () => {
   const style = useStyles();
   const isMobile = useMediaQuery("(max-width:600px)");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isAuthenticated = false;
   const theme = useTheme();
+  const { user } = useSelector((state) => state.userAuth);
+  const dispatch = useDispatch();
+  console.log(user?.displayName);
 
   return (
     <>
@@ -49,9 +49,12 @@ const Navbar = () => {
           </IconButton>
           {!isMobile && <Search />}
           <div>
-            {!isAuthenticated ? (
-              <Button color="inherit" onClick={() => {}}>
-                Login &nbsp; <AccountCircle />
+            {!user ? (
+              <Button
+                color="inherit"
+                onClick={() => dispatch(userLoginAction())}
+              >
+                Login &nbsp; <FcGoogle size={25} />
               </Button>
             ) : (
               <Button
@@ -60,11 +63,11 @@ const Navbar = () => {
                 to={`/profile/:id`}
                 className={style.linkButton}
               >
-                {!isMobile && <>My Movies &nbsp;</>}
+                {!isMobile && <>{user?.displayName} &nbsp;</>}
                 <Avatar
                   style={{ width: 30, height: 30 }}
                   alt="Profile"
-                  src={`https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Fsearch%3Fq%3Davatar&psig=AOvVaw0W9AaIyUv1VotESkH8uQjQ&ust=1674140633008000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPinjIGy0fwCFQAAAAAdAAAAABAE`}
+                  src={user?.photoURL}
                 />
               </Button>
             )}
