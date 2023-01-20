@@ -25,7 +25,6 @@ const Navbar = () => {
   const theme = useTheme();
   const { user } = useSelector((state) => state.userAuth);
   const dispatch = useDispatch();
-  console.log(user?.displayName);
 
   return (
     <>

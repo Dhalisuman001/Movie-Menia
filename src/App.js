@@ -2,6 +2,7 @@ import { CssBaseline } from "@mui/material";
 import React from "react";
 import { Route, Routes } from "react-router";
 import { Actors, MovieInfo, Movies, Navbar, Profile } from "./components/";
+import PrivateRoute from "./components/Private/PrivateRoute";
 import useStyles from "./style";
 const App = () => {
   const style = useStyles();
@@ -14,9 +15,24 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Movies />} />
             <Route exact path="/approved" element={<Movies />} />
-            <Route exact path="/movie/:id" element={<MovieInfo />} />
             <Route exact path="/actors/:id" element={<Actors />} />
-            <Route exact path="/profile/:id" element={<Profile />} />
+            <Route
+              exact
+              path="/profile/:id"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/movie/:id"
+              element={
+                <PrivateRoute>
+                  <MovieInfo />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </div>
       </main>
