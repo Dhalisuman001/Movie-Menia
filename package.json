@@ -1,6 +1,5 @@
 {
-    "homepage": "https://Dhalisuman001.github.io/box-office",
-    "name": "box-office",
+    "name": "cinemax",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
