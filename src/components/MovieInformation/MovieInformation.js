@@ -197,7 +197,7 @@ const MovieInfo = () => {
                 endIcon={isMovieWatchlisted ? <Favorite /> : <FavoriteBorder />}
                 onClick={addToWatchList}
               >
-                {!isMovieWatchlisted ? "Remove" : "Add"}
+                {isMovieWatchlisted ? "Remove" : "Add"}
               </Button>
             </Grid>
           </div>
