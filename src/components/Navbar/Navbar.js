@@ -17,6 +17,8 @@ import Search from "../Search/Search";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoginAction } from "../../redux/slices/UserSlice";
+import { ColorModeContext } from "../../util/ToogleColorMode";
+import { useContext } from "react";
 
 const Navbar = () => {
   const style = useStyles();
@@ -25,7 +27,7 @@ const Navbar = () => {
   const theme = useTheme();
   const { user } = useSelector((state) => state.userAuth);
   const dispatch = useDispatch();
-
+  const ColorMode = useContext(ColorModeContext);
   return (
     <>
       <AppBar position="fixed">
@@ -43,7 +45,11 @@ const Navbar = () => {
               <Menu />
             </IconButton>
           )}
-          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
+          <IconButton
+            color="inherit"
+            sx={{ ml: 1 }}
+            onClick={ColorMode.toggleColorMode}
+          >
             {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
           {!isMobile && <Search />}
