@@ -8,6 +8,7 @@ import {
   Box,
   CircularProgress,
   Rating,
+  Tooltip,
 } from "@mui/material";
 import {
   Movie as MovieIcon,
@@ -17,7 +18,7 @@ import {
   ArrowBack,
 } from "@mui/icons-material";
 import { Link, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
 import {
   useGetMovieQuery,
@@ -33,6 +34,7 @@ const MovieInfo = () => {
   const { id } = useParams();
   const style = useStyles();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.userAuth);
 
   const { data, error, isFetching } = useGetMovieQuery(id);
   const { data: recommendations } = useGetRecommendationsQuery({
@@ -150,7 +152,7 @@ const MovieInfo = () => {
                       xs={4}
                       md={2}
                       component={Link}
-                      to={`/actors/${character.id}`}
+                      // to={`/actors/${character.id}`}
                       style={{ textDecoration: "none" }}
                     >
                       <img
@@ -191,14 +193,27 @@ const MovieInfo = () => {
               </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={6} className={style.buttonContainer}>
-              <Button
-                color="primary"
-                variant="elevated"
-                endIcon={isMovieWatchlisted ? <Favorite /> : <FavoriteBorder />}
-                onClick={addToWatchList}
-              >
-                {isMovieWatchlisted ? "Remove" : "Add"}
-              </Button>
+              {user ? (
+                <Button
+                  variant="contained"
+                  endIcon={
+                    isMovieWatchlisted ? <Favorite /> : <FavoriteBorder />
+                  }
+                  onClick={addToWatchList}
+                >
+                  {isMovieWatchlisted ? "Remove" : "Add"}
+                </Button>
+              ) : (
+                <Tooltip title={"Please login"} disableTouchListener>
+                  <Button
+                    endIcon={
+                      isMovieWatchlisted ? <Favorite /> : <FavoriteBorder />
+                    }
+                  >
+                    Add to Watch List
+                  </Button>
+                </Tooltip>
+              )}
             </Grid>
           </div>
         </Grid>
